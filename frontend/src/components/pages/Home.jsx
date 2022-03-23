@@ -22,17 +22,33 @@ font-size: 1em;
 &:hover {
   border: 1px solid black;
 }`;
+const SpanStyle = styledcomponents.span`
+color: black;
+text-decoration: underline;
+`;
+const TitleStyle = styledcomponents.h1`
+background-color: white;
+padding: 0.5em;
+border-radius: 5px;
+`;
+
 const Home = () => {
   return (
     <ContainerDiv>
-      <h1>BSB Mecânica</h1>
+      <TitleStyle>BSB Mecânica</TitleStyle>
       <span>
-        <h4>
-          Clique <Link to={"/CreatePiece"}>aqui</Link> e cadastre suas peças
-        </h4>
+        <h3>
+          Clique{" "}
+          <Link to={"/CreatePiece"}>
+            <SpanStyle>aqui</SpanStyle>
+          </Link>{" "}
+          e cadastre suas peças.
+        </h3>
       </span>
       <ButtonStyle>
-        <Link to={"/Pieces"}>Peças cadastradas</Link>
+        <Link to={"/Pieces"}>
+          <SpanStyle>Peças cadastradas</SpanStyle>
+        </Link>
       </ButtonStyle>
     </ContainerDiv>
   );

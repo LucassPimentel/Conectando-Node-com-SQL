@@ -10,6 +10,10 @@ const GlobalStyle = createGlobalStyle`
     font-family: Arial;
 }
 
-`
+body {
+    background-color: #445760;
+}
+
+`;
 
 export default GlobalStyle;

@@ -1,5 +1,6 @@
 import axios from "axios";
 import { React, useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import styledcomponents from "styled-components";
 import Button from "../Button/Button";
 
@@ -9,6 +10,7 @@ height: 100vh;
 display: flex;
 flex-direction: column;
 align-items: center;
+gap: 1em;
 `;
 const ContainerPieces = styledcomponents.div`
 // background-color: blue;
@@ -34,9 +36,14 @@ const ContainerButtons = styledcomponents.div`
 // background-color: red;
 display: flex;
 justify-content: center;
-gap: 0.5em;
+gap: 0.5em;F
 `;
-
+const TitleStyle = styledcomponents.h1`
+background-color: white;
+padding: 0.5em;
+border-radius: 5px;
+margin-top: 1em;
+`;
 const Piece = () => {
   const [pieces, setPieces] = useState([]);
 
@@ -57,7 +64,10 @@ const Piece = () => {
 
   return (
     <Container>
-      <h1>Peças cadastradas</h1>
+      <TitleStyle>Peças cadastradas</TitleStyle>
+      <Link to={"/Home"}>
+        <Button name={"Voltar"} type={"button"} />
+      </Link>
       <ContainerPieces>
         {pieces.map((piece) => {
           return (
@@ -66,11 +76,17 @@ const Piece = () => {
                 <h3>Nome da peça:</h3> {piece.namePiece}
               </span>
               <span>
-                <h3>Valor da peça:</h3> {piece.valuePiece}
+                <h3>Valor da peça:</h3> R$ {piece.valuePiece.toLocaleString('pt-BR')}
               </span>
               <ContainerButtons>
-                <Button name={"Excluir"} type={"button"} onClick={() => deletePiece(piece.id)} />
-                <Button name={"Alterar"} type={"button"} />
+                <Button
+                  name={"Excluir"}
+                  type={"button"}
+                  onClick={() => deletePiece(piece.id)}
+                />
+                <Link to={`/EditPiece/${piece.id}`}>
+                  <Button name={"Alterar"} type={"button"} />
+                </Link>
               </ContainerButtons>
             </ContainerPiece>
           );
