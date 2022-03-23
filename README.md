@@ -5,7 +5,7 @@
 - JavaScript
 - NodeJS
 - SQL
-- 
+
 ## FrontEnd Libs | Frameworks | Dependências
 - React
 - Styled-Components
